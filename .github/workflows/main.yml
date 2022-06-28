@@ -32,11 +32,14 @@ jobs:
           username: ${{secrets.DOCKERHUB_USER}}
           password: ${{secrets.DOCKERHUB_PWD}}
           
-            
+      - name: Run script file
+        run: ls
+        shell: bash
+      
       - name: Build and push Docker images
         uses: docker/build-push-action@v3.0.0
         with:
-          context: ./
+          context: ./src
           push: true
           tags: |
             hugosleao/kube-news:latest
